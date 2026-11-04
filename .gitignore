@@ -5,5 +5,7 @@
 .vs
 bin
 Debug
+obj
 *.csproj.user
 .workbuddy-ai
+/packages
