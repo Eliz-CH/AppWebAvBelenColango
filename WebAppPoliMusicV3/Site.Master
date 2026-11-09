@@ -16,6 +16,131 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <style type="text/css">
+        /* ===== PoliMusic navbar - dark lavender theme ===== */
+        .pm-navbar {
+            background: linear-gradient(90deg, #1f0d38 0%, #3b1063 55%, #4B0082 100%);
+            border-bottom: 1px solid rgba(147, 112, 219, 0.28);
+            box-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .pm-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 19px;
+            font-weight: 700;
+            color: #E6E6FA;
+            text-decoration: none;
+            letter-spacing: 0.2px;
+        }
+
+        .pm-brand:hover {
+            color: #fff;
+        }
+
+        /* Circular gradient logo */
+        .pm-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #A78BFA 0%, #6D28D9 55%, #4B0082 100%);
+            box-shadow: 0 0 14px rgba(147, 112, 219, 0.6);
+            flex-shrink: 0;
+        }
+
+        /* Right side of the navbar */
+        .pm-navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-left: auto;
+        }
+
+        .pm-welcome {
+            color: #E6E6FA;
+            font-size: 13.5px;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+
+        .pm-welcome strong {
+            color: #C4B5FD;
+            font-weight: 600;
+        }
+
+        .pm-logout {
+            display: inline-block;
+            text-decoration: none;
+            color: #E6E6FA;
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 6px 18px;
+            border: 1px solid rgba(167, 139, 250, 0.45);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .pm-logout:hover,
+        .pm-logout:focus {
+            background: rgba(167, 139, 250, 0.22);
+            border-color: #A78BFA;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(167, 139, 250, 0.35);
+        }
+
+        /* Nav links */
+        .pm-navbar .nav-link {
+            color: rgba(230, 230, 250, 0.75);
+            font-size: 13.5px;
+            font-weight: 400;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+            transition: color 0.2s ease;
+        }
+
+        .pm-navbar .nav-link:hover,
+        .pm-navbar .nav-link:focus {
+            color: #fff;
+        }
+
+        .pm-navbar .nav-item.active .nav-link {
+            color: #C4B5FD;
+            font-weight: 600;
+        }
+
+        /* Navbar collapse (mobile) */
+        .pm-navbar .navbar-toggler {
+            border-color: rgba(167, 139, 250, 0.4);
+        }
+
+        .pm-navbar .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(230,230,250,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        /* Page background for the whole app */
+        body {
+            background: linear-gradient(160deg, #1a0b2e 0%, #2d1b4e 45%, #1a0b2e 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .pm-footer {
+            text-align: center;
+            padding: 18px 0;
+            color: rgba(230, 230, 250, 0.28);
+            font-size: 12px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .pm-brand { font-size: 16px; }
+            .pm-welcome { font-size: 12px; }
+            .pm-navbar-right { gap: 10px; }
+            .pm-logout { padding: 5px 13px; font-size: 11.5px; }
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -38,10 +163,12 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm pm-navbar">
             <div class="container">
-                1.	<a class="navbar-brand" runat="server" href="~/">PoliMusic - BelenCholango</a>
-                <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                <a class="navbar-brand pm-brand" runat="server" href="~/">
+                    <span class="pm-logo"></span>
+                    <span>PoliMusic</span>
+                </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,9 +176,17 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Song">Canciones</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Logout">Cerrar Sesión</a></li>
+                    </ul>
+                    <ul class="navbar-nav pm-navbar-right">
+                        <li class="nav-item pm-welcome">
+                            Welcome <strong><asp:Label ID="lblUserName" runat="server"></asp:Label></strong>
+                        </li>
+                        <li class="nav-item">
+                            <a class="pm-logout" runat="server" href="~/Logout">Logout</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -60,8 +195,8 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+            <footer class="pm-footer">
+                <p>&copy; <%: DateTime.Now.Year %> - PoliMusic - BelenCholango</p>
             </footer>
         </div>
     </form>
